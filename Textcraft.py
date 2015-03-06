@@ -5,6 +5,7 @@ from Classes import Alex
 from Classes import Steve
 from Values import Values
 import sys
+import threading
 
 
 # Get name and Class
