@@ -4,14 +4,24 @@ from Grid import Grid
 from Classes import Alex
 from Classes import Steve
 from Values import Values
+import sys
 
 
-# Get name
-name = raw_input("Please name your character: ")
-class_type = raw_input("Would you like to use the Alex or Steve skin model? ").lower()
+# Get name and Class
+#name = raw_input("Please name your character: ")
+sys.stdout.write("Please name your character: ")
+name = sys.stdin.readline().rstrip()
+sys.stdout.write("Oh, I remember now! Your name is " + name + "!\n")
+#class_type = raw_input("Would you like to use the Alex or Steve skin model? ").lower()
+sys.stdout.write("Would you like to use the Alex or Steve skin model? ")
+class_type = sys.stdin.readline().rstrip().lower()
+#sys.stdout.write(class_type)
 
 # Choose difficulty
-difficulty = raw_input("Choose your difficulty (Easy, Normal, Hard): ").lower()
+#difficulty = raw_input("Choose your difficulty (Easy, Normal, Hard): ").lower()
+sys.stdout.write("Choose your difficulty (Easy, Normal, Hard): ")
+difficulty = sys.stdin.readline().rstrip().lower()
+
 if difficulty not in {"easy", "normal", "hard"}:
     difficulty = "normal"
 
@@ -25,7 +35,7 @@ if class_type == "alex":
 elif class_type == "steve":
     player = Steve(board, name)
 else:
-    print "Since you didn't choose one of our options, we're going to make you Alex."
+    print "Since you didn't choose one of our class options, we're going to make you Alex."
     player = Alex(board, name)
 
 
@@ -33,7 +43,9 @@ else:
 # Gameplay Loop
 while (message != Values.DEATH_MESSAGE) and (message != Values.GOAL_MESSAGE):
     print message
-    command = raw_input(Values.PROMPT)
+    #command = raw_input(Values.PROMPT)
+    sys.stdout.write(Values.PROMPT)
+    command = sys.stdin.readline().rstrip()
     command = command.split(" ")
 
     options = {'go', 'quit', 'attack', 'health', 'help'}

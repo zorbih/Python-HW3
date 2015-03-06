@@ -78,7 +78,7 @@ class Player(Character):
         return "go [N, S, E, or W] \nquit \nattack \nhealth \nhelp "
 
     def health(self):
-        return "{} has {} health.".format(self.name, self.health)
+        return "{} has {} health.".format(self.name, self.hp)
 
     def go(self, direction, board):
         if self.engaged:
