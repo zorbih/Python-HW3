@@ -15,7 +15,7 @@ class Grid():
         self.board[p.x][p.y] = value
         return p
 
-    def __init__(self):
+    def __init__(self, difficulty):
         # Initialize board to empties
         self.board = [[Values.EMPTY for x in range(5)] for x in range(5)]
 
@@ -29,8 +29,13 @@ class Grid():
         self.assign_tile(Values.DEATH)
         self.start_pos = self.assign_tile(Values.START)
 
+        # Difficulty dictionary
+        difficulties = {"easy" : 4,
+                        "normal" : 6,
+                        "hard" : 8}
+
         # Spawn 4 monsters
-        for x in range(4):
+        for x in range(difficulties[difficulty]):
             self.assign_tile(Values.ENEMY)
 
         # Spawn 1 Health
